@@ -3,10 +3,12 @@ package com.sameer.notifyservice.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController 
+import com.sameer.notifyservice.exception.ResourceNotFoundException;
+
+@RestController
 public class HealthController {
     @GetMapping("/api/test")
-    public String health(){
-        return  "Notification service is running!";
-    }   
+    public String health() {
+        return "Notification service is running!";
+    }
 }
