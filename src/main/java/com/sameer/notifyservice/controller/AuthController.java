@@ -1,6 +1,7 @@
 package com.sameer.notifyservice.controller;
 
 import com.sameer.notifyservice.dto.AuthResponse;
+import com.sameer.notifyservice.dto.LoginRequest;
 import com.sameer.notifyservice.dto.RegisterRequest;
 import com.sameer.notifyservice.service.AuthService;
 import jakarta.validation.Valid;
@@ -23,5 +24,11 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
         AuthResponse response = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        AuthResponse response = authService.login(request);
+        return ResponseEntity.ok(response);
     }
 }
