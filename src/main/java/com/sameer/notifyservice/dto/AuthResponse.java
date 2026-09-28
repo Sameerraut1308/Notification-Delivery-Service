@@ -1,0 +1,23 @@
+package com.sameer.notifyservice.dto;
+
+import com.sameer.notifyservice.model.User;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.UUID;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class AuthResponse {
+
+    private UUID id;
+    private String name;
+    private String email;
+    private User.Role role;
+    private String token; // We'll return the token right after registration!
+    private String message;
+}
