@@ -115,4 +115,20 @@ public class GlobalExceptionHandler {
                                                 .path(request.getRequestURI())
                                                 .build());
         }
+
+            // Handles 403 Forbidden - Insufficient permissions / role
+    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
+    public ResponseEntity<ErrorResponse> handleAccessDenied(
+            org.springframework.security.access.AccessDeniedException ex,
+            HttpServletRequest request) {
+
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(ErrorResponse.builder()
+                        .timestamp(LocalDateTime.now())
+                        .status(HttpStatus.FORBIDDEN.value())
+                        .error("Forbidden")
+                        .message("Access denied: You do not have permission to access this resource")
+                        .path(request.getRequestURI())
+                        .build());
+    }
 }
